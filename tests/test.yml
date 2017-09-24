@@ -1,4 +1,12 @@
+---
 - hosts: all
+  become: yes
+  roles: 
+    - geerlingguy.git
+    - role_under_test
+
+  vars:
+    gitea_http_port: "3210"
 
   pre_tasks:
     - name: Update apt cache.
@@ -8,7 +16,3 @@
 
     - name: Ensure build dependencies are installed.
       package: name=curl state=present
-
-  roles:
-    - geerlingguy.git
-    - role_under_test

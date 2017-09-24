@@ -1,9 +1,10 @@
 ---
-gogs_user: git
-gogs_user_home: /home/git
-gogs_binary_url: https://github.com/gogits/gogs/releases/download/v0.9.97/linux_amd64.tar.gz
-gogs_http_port: "3000"
-gogs_use_mysql: false
-gogs_db_name: gogs
-gogs_db_username: gogs
-gogs_db_password: root
+gitea_user: git
+gitea_user_home: /home/git
+gitea_binary_url: "https://github.com/go-gitea/gitea/releases/download/v1.1.4/gitea-1.1.4-linux-amd64"
+gitea_binary_sig_url: "{{ gitea_binary_url }}.sha256"
+gitea_http_port: "3000"
+gitea_use_mysql: false
+gitea_db_name: gitea
+gitea_db_username: gitea
+gitea_db_password: root

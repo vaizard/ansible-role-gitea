@@ -1,5 +1,5 @@
 [Unit]
-Description=Gogs (Go Git Service)
+Description=Gitea (Git with a cup of tea)
 After=syslog.target
 After=network.target
 #After=mysqld.service
@@ -15,12 +15,12 @@ After=network.target
 #LimitMEMLOCK=infinity
 #LimitNOFILE=65535
 Type=simple
-User={{ gogs_user }}
-Group={{ gogs_user }}
-WorkingDirectory={{ gogs_user_home }}/gogs
-ExecStart={{ gogs_user_home }}/gogs/gogs web
+User={{ gitea_user }}
+Group={{ gitea_user }}
+WorkingDirectory={{ gitea_user_home }}/gitea
+ExecStart={{ gitea_user_home }}/gitea/gitea web -p {{ gitea_http_port }}
 Restart=always
-Environment=USER={{ gogs_user }} HOME={{ gogs_user_home }}
+Environment=USER={{ gitea_user }} HOME={{ gitea_user_home }}
 
 [Install]
 WantedBy=multi-user.target

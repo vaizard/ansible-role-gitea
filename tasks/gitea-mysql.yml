@@ -1,0 +1,18 @@
+---
+- name: Create Gitea MySQL user.
+  mysql_user:
+    name: "{{ gitea_db_username }}"
+    host: "{{ item }}"
+    priv: "{{ gitea_db_name }}.*:ALL"
+    password: "{{ gitea_db_password }}"
+  with_items:
+    - 127.0.0.1
+    - ::1
+    - localhost
+  notify: restart gitea
+
+- name: Create Gitea MySQL database.
+  mysql_db:
+    db: "{{ gitea_db_name }}"
+    state: present
+  notify: restart gitea

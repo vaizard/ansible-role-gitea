@@ -14,14 +14,14 @@ script:
   - export cleanup=false
 
   # Download test shim.
-  - wget -O ${PWD}/tests/test.sh https://gist.githubusercontent.com/geerlingguy/73ef1e5ee45d8694570f334be385e181/raw/
+  - wget -O ${PWD}/tests/test.sh https://gist.githubusercontent.com/noplanman/40e96f31ee2301469769d4236aff40e2/raw/
   - chmod +x ${PWD}/tests/test.sh
 
   # Run tests.
   - ${PWD}/tests/test.sh
 
   # Check if we get an installation page.
-  - 'docker exec --tty ${container_id} env TERM=xterm curl http://localhost:3000/install'
+  - 'docker exec --tty ${container_id} env TERM=xterm curl http://localhost:3210/install'
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
