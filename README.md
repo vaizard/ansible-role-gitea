@@ -1,6 +1,7 @@
 # Ansible Role: Gitea
 
 **This role is based on [ansible-role-gogs] by [Jeff Geerling], author of [Ansible for DevOps].** 
+
 [![Build Status](https://travis-ci.org/ArgonQQ/ansible-role-gitea.svg?branch=master)](https://travis-ci.org/ArgonQQ/ansible-role-gitea)
 
 Installs [Gitea], a Go-based front-end to Git, on RedHat or Debian-based linux systems.
