@@ -1,4 +1,7 @@
 ---
+- name: Install the MySQL dev module
+  package: name=default-libmysqlclient-dev
+
 - name: Create Gitea MySQL user.
   mysql_user:
     name: "{{ gitea_db_username }}"
