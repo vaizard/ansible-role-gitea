@@ -1,6 +1,6 @@
 # Ansible Role: Gitea
 
-**This role is based on [ansible-role-gogs] by [Jeff Geerling], author of [Ansible for DevOps].** 
+**This role is based on [ansible-role-gogs] by [Jeff Geerling], author of [Ansible for DevOps].**
 
 [![Build Status](https://travis-ci.org/ArgonQQ/ansible-role-gitea.svg?branch=master)](https://travis-ci.org/ArgonQQ/ansible-role-gitea)
 
@@ -21,9 +21,13 @@ Available variables are listed below, along with default values (see `defaults/m
 
 The user and home under which Gitea will run and be installed.
 
+    gitea_version: 1.4.2
+
+Gitea version for install and for easy upgrade (`1.4.2`)
+
     gitea_binary_url: https://github.com/go-gitea/gitea/releases/download/v1.1.4/gitea-1.1.4-linux-amd64
 
-Download URL for the Gitea binary.
+Download URL for the Gitea binary. (`https://github.com/go-gitea/gitea/releases/download/v{{ gitea_version }}/gitea-{{ gitea_version }}-linux-amd64`)
 
     gitea_binary_sig_url: https://github.com/go-gitea/gitea/releases/download/v1.1.4/gitea-1.1.4-linux-amd64.sha256
 

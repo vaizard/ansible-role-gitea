@@ -18,6 +18,14 @@
   stat: path=/usr/local/bin/gitea
   register: gitea_bin
 
+- name: Check gitea version
+  shell: /usr/local/bin/gitea --version|cut -d ' ' -f 3
+  check_mode: no
+  changed_when: false
+  register: gitea_bin_version
+  when: gitea_bin.stat.islnk is defined
+
+
 - name: Download Gitea.
   get_url:
     url: "{{ gitea_binary_url }}"
@@ -26,7 +34,8 @@
     group: "{{ gitea_user }}"
     mode: 0755
     checksum: "sha256: {{ lookup('url', gitea_binary_sig_url).split(' ')[0] }}"
-  when: gitea_bin.stat.islnk is not defined
+  when: gitea_bin.stat.islnk is not defined or
+        gitea_bin_version != gitea_version
 
 - include: init-setup.yml
 - include: gitea-mysql.yml
