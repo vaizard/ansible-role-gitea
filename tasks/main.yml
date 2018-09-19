@@ -25,7 +25,6 @@
   register: gitea_bin_version
   when: gitea_bin.stat.islnk is defined
 
-
 - name: Download Gitea.
   get_url:
     url: "{{ gitea_binary_url }}"
@@ -40,6 +39,21 @@
 - include: init-setup.yml
 - include: gitea-mysql.yml
   when: gitea_use_mysql
+
+- name: Create Gogs log folder.
+  file:
+    path: "{{ gogs_user_home }}/gogs/log"
+    state: directory
+    owner: "{{ gogs_user }}"
+    group: "{{ gogs_user }}"
+    mode: 0755
+
+- name: Check if Gogs is already configured.
+  stat: path="{{ gogs_user_home }}/gogs/custom/conf/app.ini"
+  register: gogs_ini
+
+- include: init-appini.yml
+  when: gogs_ini.stat.islnk is not defined
 
 - name: Ensure Gitea is running.
   service: name=gitea state=started enabled=yes
