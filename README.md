@@ -21,15 +21,15 @@ Available variables are listed below, along with default values (see `defaults/m
 
 The user and home under which Gitea will run and be installed.
 
-    gitea_version: 1.4.2
+    gitea_version: 1.5.1
 
-Gitea version for install and for easy upgrade (`1.4.2`)
+Gitea version for install and for easy upgrade (`1.5.1`)
 
-    gitea_binary_url: https://github.com/go-gitea/gitea/releases/download/v1.1.4/gitea-1.1.4-linux-amd64
+    gitea_binary_url: https://github.com/go-gitea/gitea/releases/download/v1.5.1/gitea-1.5.1-linux-amd64
 
 Download URL for the Gitea binary. (`https://github.com/go-gitea/gitea/releases/download/v{{ gitea_version }}/gitea-{{ gitea_version }}-linux-amd64`)
 
-    gitea_binary_sig_url: https://github.com/go-gitea/gitea/releases/download/v1.1.4/gitea-1.1.4-linux-amd64.sha256
+    gitea_binary_sig_url: https://github.com/go-gitea/gitea/releases/download/v1.5.1/gitea-1.5.1-linux-amd64.sha256
 
 Download URL for the SHA256 checksum to verify binary. (`"{{ gitea_binary_url }}.sha256"`)
 
