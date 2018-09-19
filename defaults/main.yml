@@ -5,7 +5,65 @@ gitea_version: 1.5.1
 gitea_binary_url: "https://github.com/go-gitea/gitea/releases/download/v{{ gitea_version }}/gitea-{{ gitea_version }}-linux-amd64"
 gitea_binary_sig_url: "{{ gitea_binary_url }}.sha256"
 gitea_http_port: "3000"
-gitea_use_mysql: false
+gitea_use_mysql: true
 gitea_db_name: gitea
 gitea_db_username: gitea
 gitea_db_password: root
+gitea_domain: 'localhost'
+gitea_root_url: 'http://localhost:3000/'
+gitea_mailer_host: 'mail.example.com:587'
+gitea_mailer_from: 'git@example.com'
+gitea_mailer_user: 'git@example.com'
+gitea_mailer_pass: 'mysecretpass'
+gitea_app_name: 'Gitea: Git with a cup of tea'
+gitea_mode: prod
+
+# install-time defaults for {{ gitea_user_home }}/gitea/custom/conf/app.ini
+gitea_config:
+  database:
+    DB_TYPE: mysql
+    HOST: 127.0.0.1:3306
+    NAME: '{{ gitea_db_name }}'
+    USER: '{{ gitea_db_username }}'
+    PASSWD: '{{ gitea_db_password }}'
+    SSL_MODE: 'disable'
+    PATH: 'data/gitea.db'
+  repository:
+    ROOT: '{{ gitea_user_home }}/gitea-repositories'
+  repository.upload:
+    FILE_MAX_SIZE: 10
+    MAX_FILES: 10
+  server:
+    DOMAIN: '{{ gitea_domain }}'
+    ROOT_URL: '{{ gitea_root_url }}'
+    HTTP_PORT: '{{ gitea_http_port }}'
+    SSH_PORT: '{{ gitea_ssh_port }}'
+    START_SSH_SERVER: true
+    OFFLINE_MODE: false
+  mailer:
+    ENABLED: true
+    HOST: '{{ gitea_mailer_host }}'
+    FROM: '{{ gitea_mailer_from }}'
+    USER: '{{ gitea_mailer_user }}'
+    PASSWD: '{{ gitea_mailer_pass }}'
+  service:
+    REGISTER_EMAIL_CONFIRM: true
+    ENABLE_NOTIFY_MAIL: true
+    DISABLE_REGISTRATION: false
+    REQUIRE_SIGNIN_VIEW: false
+    ENABLE_REVERSE_PROXY_AUTHENTICATION: true
+    ENABLE_REVERSE_PROXY_AUTO_REGISTERATION: true
+  picture:
+    DISABLE_GRAVATAR: false
+    ENABLE_FEDERATED_AVATAR: true
+  session:
+    PROVIDER: 'memory'
+  security:
+    INSTALL_LOCK: true
+    SECRET_KEY: '!#@FDEWREWR&*(-{{ ansible_machine_id }}'
+    MIN_PASSWORD_LENGTH = 12
+  log:
+    ROOT_PATH: '{{ gitea_user_home }}/gitea/log'
+    MODE: 'file'
+    BUFFER_LEN: 10000
+    LEVEL: 'Info'
