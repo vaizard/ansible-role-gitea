@@ -60,8 +60,8 @@ gitea_config:
     PROVIDER: 'memory'
   security:
     INSTALL_LOCK: true
-    SECRET_KEY: '!#@FDEWREWR&*(-{{ ansible_machine_id }}'
-    MIN_PASSWORD_LENGTH = 12
+    SECRET_KEY: '@FDEWREWR&*(-{{ ansible_machine_id }}'
+    MIN_PASSWORD_LENGTH: 12
   log:
     ROOT_PATH: '{{ gitea_user_home }}/gitea/log'
     MODE: 'file'

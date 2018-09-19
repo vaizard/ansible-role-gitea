@@ -40,20 +40,20 @@
 - include: gitea-mysql.yml
   when: gitea_use_mysql
 
-- name: Create Gogs log folder.
+- name: Create Gitea log folder.
   file:
-    path: "{{ gogs_user_home }}/gogs/log"
+    path: "{{ gitea_user_home }}/gitea/log"
     state: directory
-    owner: "{{ gogs_user }}"
-    group: "{{ gogs_user }}"
+    owner: "{{ gitea_user }}"
+    group: "{{ gitea_user }}"
     mode: 0755
 
-- name: Check if Gogs is already configured.
-  stat: path="{{ gogs_user_home }}/gogs/custom/conf/app.ini"
-  register: gogs_ini
+#- name: Check if gitea is already configured.
+#  stat: path="{{ gitea_user_home }}/gitea/custom/conf/app.ini"
+#  register: gitea_ini
 
 - include: init-appini.yml
-  when: gogs_ini.stat.islnk is not defined
+#  when: gitea_ini.stat.islnk is not defined
 
 - name: Ensure Gitea is running.
   service: name=gitea state=started enabled=yes

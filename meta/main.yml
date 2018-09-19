@@ -1,6 +1,6 @@
 ---
 dependencies:
-  - geerlingguy.git
+  - mage-git
 
 galaxy_info:
   author: noplanman

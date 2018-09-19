@@ -14,4 +14,4 @@
     dest: "{{ gitea_user_home }}/gitea/custom/conf/app.ini"
     owner: "{{ gitea_user }}"
     group: "{{ gitea_user }}"
-mode: 0644
+    mode: 0644
