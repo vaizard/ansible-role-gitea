@@ -21,9 +21,9 @@ Available variables are listed below, along with default values (see `defaults/m
 
 The user and home under which Gitea will run and be installed.
 
-    gitea_version: 1.5.1
+    gitea_version: 1.7.3
 
-Gitea version for install and for easy upgrade (`1.5.1`)
+Gitea version for install and for easy upgrade (`1.7.3`). You can also use `gitea_version: 'latest'`
 
     gitea_binary_url: https://github.com/go-gitea/gitea/releases/download/v1.5.1/gitea-1.5.1-linux-amd64
 

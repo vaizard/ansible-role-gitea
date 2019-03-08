@@ -25,6 +25,21 @@
   register: gitea_bin_version
   when: gitea_bin.stat.islnk is defined
 
+- uri:
+    url: https://api.github.com/repos/go-gitea/gitea/releases/latest
+    return_content: true
+  register: json_response
+  when: gitea_version == 'latest'
+
+- set_fact:
+    gitea_fetched_version: "{{ json_response.json.name }}"
+  when: gitea_version == 'latest'
+
+- set_fact:
+    gitea_binary_url: "https://github.com/go-gitea/gitea/releases/download/{{ gitea_fetched_version }}/gitea-{{ gitea_fetched_version | replace('v','') }}-linux-amd64"
+    gitea_binary_sig_url: "{{ gitea_binary_url }}.sha256"
+  when: gitea_version == 'latest'
+
 - name: Download Gitea.
   get_url:
     url: "{{ gitea_binary_url }}"

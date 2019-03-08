@@ -1,7 +1,7 @@
 ---
 gitea_user: git
 gitea_user_home: /home/git
-gitea_version: 1.6.2
+gitea_version: 1.7.3 # Optionally use 'latest'. This will work until something breaks.
 gitea_binary_url: "https://github.com/go-gitea/gitea/releases/download/v{{ gitea_version }}/gitea-{{ gitea_version }}-linux-amd64"
 gitea_binary_sig_url: "{{ gitea_binary_url }}.sha256"
 gitea_http_port: "3000"
