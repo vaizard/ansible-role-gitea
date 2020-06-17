@@ -2,10 +2,10 @@ APP_NAME = {{ gitea_app_name }}
 RUN_USER = {{ gitea_user }}
 RUN_MODE = {{ gitea_mode }}
 
-{% for section, options in gitea_config.iteritems() %}
+{% for section, options in gitea_config.items() %}
 [{{ section }}]
 
-{% for key, value in options.iteritems() %}
+{% for key, value in options.items() %}
 {{ key }} = {{ value }}
 {% endfor %}
 
